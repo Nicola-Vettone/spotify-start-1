@@ -8,13 +8,19 @@ import { useEffect } from "react";
 
 const Album = ({ artist, genre }) => {
   const dispatch = useDispatch();
-  const songs = useSelector((state) => state.music.content);
 
+  const songs = useSelector((state) => {
+    console.log(state.music.content);
+    return state.music.content.filter((song) => song.artist.name.toLowerCase() === artist.toLowerCase());
+  });
+
+  console.log(songs);
   useEffect(() => {
     dispatch(getMusic(artist));
+    console.log(`Caricamento per l'artista: ${artist}`);
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [artist]);
-
+  }, [dispatch, artist]);
+  console.log(songs);
   return (
     <Container className="my-4">
       <h3>{genre} Music</h3>

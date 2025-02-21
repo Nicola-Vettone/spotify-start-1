@@ -15,6 +15,8 @@ function MainSection() {
         </div>
 
         <Album artist="eminem" genre="Rock Classics" />
+        <Album artist="queen" genre="Pop classic" />
+        {/* <Album artist="tedua" genre="Rap" /> */}
       </main>
     </>
   );
