@@ -10,7 +10,7 @@ const Album = ({ artist, genre }) => {
 
   useEffect(() => {
     dispatch(getMusic(artist));
-  }, [dispatch, artist]);
+  }, [artist]);
 
   return (
     <Container className="my-4">

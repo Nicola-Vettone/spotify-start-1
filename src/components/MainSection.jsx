@@ -14,7 +14,7 @@ function MainSection() {
           </div>
         </div>
 
-        <Album artist="tedua" genre="Rock Classics" />
+        <Album artist="eminem" genre="Rock Classics" />
       </main>
     </>
   );
