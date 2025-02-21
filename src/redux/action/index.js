@@ -1,4 +1,5 @@
 export const SET_MUSIC = "SET_MUSIC";
+export const PLAYER_MUSIC = "PLAYER_MUSIC";
 
 export const getMusic = (artist) => {
   return async (dispatch, getState) => {
@@ -18,3 +19,5 @@ export const getMusic = (artist) => {
     }
   };
 };
+
+export const selectSong = (song) => ({ type: PLAYER_MUSIC, payload: song });
