@@ -1,8 +1,10 @@
-import React, { useEffect } from "react";
+/* eslint-disable react/prop-types */
+
 import { useDispatch, useSelector } from "react-redux";
 
-import { Container, Row, Spinner, Card, Col } from "react-bootstrap";
+import { Container, Row, Spinner, Col } from "react-bootstrap";
 import { getMusic } from "../redux/action";
+import { useEffect } from "react";
 
 const Album = ({ artist, genre }) => {
   const dispatch = useDispatch();
@@ -10,6 +12,7 @@ const Album = ({ artist, genre }) => {
 
   useEffect(() => {
     dispatch(getMusic(artist));
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [artist]);
 
   return (
@@ -19,13 +22,14 @@ const Album = ({ artist, genre }) => {
         {songs.length === 0 && <Spinner animation="border" />}
         {songs.map((song) => (
           <Col key={song.id} md={3}>
-            <Card>
-              <Card.Img variant="top" src={song.album.cover_xl} />
-              <Card.Body>
-                <Card.Title>{song.title}</Card.Title>
-                <Card.Text>{song.artist.name}</Card.Text>
-              </Card.Body>
-            </Card>
+            <div className="col text-center">
+              <img className="img-fluid" src={song.album.cover_xl} alt="track" />
+              <p>
+                Track: {song.title}
+                <br />
+                Artist: {song.artist.name}
+              </p>
+            </div>
           </Col>
         ))}
       </Row>
