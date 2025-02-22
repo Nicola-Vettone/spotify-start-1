@@ -1,12 +1,16 @@
 import { useState } from "react";
 import { Button, Form } from "react-bootstrap";
+import Album from "./Album";
 
 function TopBar() {
   const [artist, setArtist] = useState("");
+  const [search, setSearch] = useState(null);
 
   const handleSubmit = (e) => {
     e.preventDefault();
+    setSearch(artist); // Imposta l'artista da cercare
   };
+
   return (
     <>
       <aside className="col col-2">
@@ -50,7 +54,7 @@ function TopBar() {
                         />
                       </Form.Group>
 
-                      <Button onClick={console.log(artist)}>Go</Button>
+                      <Button type="submit">Go</Button>
                     </Form>
                   </li>
                 </ul>
@@ -64,11 +68,15 @@ function TopBar() {
             <button className="btn login-btn" type="button">
               Login
             </button>
-            <a href="#">Cookie Policy</a> |<a href="#"> Privacy</a>
+            <a href="#">Cookie Policy</a> | <a href="#">Privacy</a>
           </div>
         </nav>
       </aside>
+
+      {/* Mostra i risultati solo se c'è una ricerca */}
+      {search && <Album artist={search} genre="La tua ricerca" />}
     </>
   );
 }
+
 export default TopBar;
