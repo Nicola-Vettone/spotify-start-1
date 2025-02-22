@@ -20,15 +20,14 @@ const Album = ({ artist, genre }) => {
 
   console.log(songs);
   useEffect(() => {
-    dispatch(getMusic(artist));
-    console.log(`Caricamento per l'artista: ${artist}`);
-    // eslint-disable-next-line react-hooks/exhaustive-deps
+    if (artist) {
+      dispatch(getMusic(artist));
+      console.log(`Caricamento per l'artista: ${artist}`);
+    }
   }, [dispatch, artist]);
-  console.log(songs);
-
   return (
     <Container className="my-4">
-      <h3>{genre} Music</h3>
+      <h3>{genre}</h3>
       <Row>
         {songs.length === 0 && <Spinner animation="border" />}
         {songs.map((song) => (

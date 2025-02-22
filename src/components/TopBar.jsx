@@ -1,6 +1,8 @@
 import { useState } from "react";
 import { Button, Form } from "react-bootstrap";
-import Album from "./Album";
+
+import { Link } from "react-router";
+import MainSection from "./MainSection";
 
 function TopBar() {
   const [artist, setArtist] = useState("");
@@ -34,9 +36,9 @@ function TopBar() {
               <div className="navbar-nav">
                 <ul>
                   <li>
-                    <a className="nav-item nav-link d-flex align-items-center" href="#">
+                    <Link to={"/"} className="nav-item nav-link d-flex align-items-center" href="#">
                       <i className="bi bi-house-door-fill"></i>&nbsp; Home
-                    </a>
+                    </Link>
                   </li>
                   <li>
                     <a className="nav-item nav-link d-flex align-items-center" href="#">
@@ -74,7 +76,8 @@ function TopBar() {
       </aside>
 
       {/* Mostra i risultati solo se c'è una ricerca */}
-      {search && <Album artist={search} genre="La tua ricerca" />}
+      {<MainSection artist={search} genre="La tua ricerca" />}
+      {/* {search && <Album artist={search} genre="La tua ricerca" />} */}
     </>
   );
 }

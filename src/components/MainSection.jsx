@@ -1,6 +1,7 @@
+/* eslint-disable react/prop-types */
 import Album from "./Album";
 
-function MainSection() {
+function MainSection({ artist, genre }) {
   return (
     <>
       <main className="col-12 col-md-9 offset-md-3 mainPage">
@@ -14,6 +15,7 @@ function MainSection() {
           </div>
         </div>
 
+        {artist && genre && <Album artist={artist} genre={genre} />}
         <Album artist="eminem" genre="Rap " />
         <Album artist="queen" genre="Pop " />
         <Album artist="nirvana" genre="Rock" />
