@@ -5,7 +5,8 @@ import { Link } from "react-router";
 import { noFavouritesSong } from "../redux/action";
 
 const Favourites = () => {
-  const favourites = useSelector((state) => state.favourites?.content);
+  const favourites = useSelector((state) => state.favourites.content);
+
   const dispatch = useDispatch();
   function handleClick(image, title) {
     dispatch({ type: "PLAYER_MUSIC", payload: { image, title } });
@@ -34,16 +35,18 @@ const Favourites = () => {
                         <br />
                         Artist: {song.artist.name}
                       </p>
-                      <Button
-                        variant="light"
-                        className="text-danger"
-                        onClick={() => {
-                          dispatch(noFavouritesSong(song.album.id));
-                          console.log(song);
-                        }}
-                      >
-                        <i className="bi bi-heart-fill"></i>
-                      </Button>
+                      {
+                        <Button
+                          variant="light"
+                          className="text-danger"
+                          onClick={() => {
+                            dispatch(noFavouritesSong(song.album.id));
+                            console.log(song);
+                          }}
+                        >
+                          <i className="bi bi-heart-fill"></i>
+                        </Button>
+                      }
                     </div>
                   </Col>
                 ))
