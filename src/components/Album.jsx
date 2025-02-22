@@ -9,8 +9,8 @@ import { useEffect } from "react";
 const Album = ({ artist, genre }) => {
   const dispatch = useDispatch();
 
-  function handleClick(image) {
-    dispatch({ type: "PLAYER_MUSIC", payload: image });
+  function handleClick(image, title) {
+    dispatch({ type: "PLAYER_MUSIC", payload: { image, title } });
   }
 
   const songs = useSelector((state) => {
@@ -35,7 +35,7 @@ const Album = ({ artist, genre }) => {
           <Col key={song.id} md={3}>
             <div className="col text-center">
               <img
-                onClick={() => handleClick(song.album.cover_xl)}
+                onClick={() => handleClick(song.album.cover_xl, song.title)}
                 className="img-fluid"
                 src={song.album.cover_xl}
                 alt="track"

@@ -9,7 +9,10 @@ const playerReducers = (state = initialState, action) => {
     case PLAYER_MUSIC:
       return {
         ...state,
-        content: action.payload,
+        content: {
+          image: action.payload.image,
+          title: action.payload.title,
+        },
       };
 
     default:

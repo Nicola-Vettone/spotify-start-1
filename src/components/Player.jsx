@@ -1,7 +1,8 @@
 import { useSelector } from "react-redux";
 
 function Player() {
-  const playerImage = useSelector((state) => state.cover.content);
+  const player = useSelector((state) => state.cover.content) || {};
+  console.log(player);
   return (
     <div className="container-fluid fixed-bottom bg-container pt-1">
       <div className="row h-100">
@@ -9,8 +10,9 @@ function Player() {
           <div className="row h-100 flex-column justify-content-center align-items-center">
             <div className="col-6 col-md-4 playerControls">
               <div className="d-flex">
-                <div>
-                  <img src={playerImage} alt="" width={60} />
+                <div className="d-flex">
+                  <img src={player.image} alt="" width={60} />
+                  <p className="text-white">{player.title}</p>
                 </div>
                 <a href="#">
                   <img src="assets/playerbuttons/shuffle.png" alt="shuffle" />
