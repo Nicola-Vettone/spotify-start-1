@@ -1,4 +1,12 @@
+import { useState } from "react";
+import { Button, Form } from "react-bootstrap";
+
 function TopBar() {
+  const [artist, setArtist] = useState("");
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+  };
   return (
     <>
       <aside className="col col-2">
@@ -32,12 +40,18 @@ function TopBar() {
                     </a>
                   </li>
                   <li>
-                    <div className="input-group mt-3">
-                      <input type="text" className="form-control" placeholder="Search" aria-label="Search" />
-                      <div className="input-group-append">
-                        <button className="btn btn-outline-secondary btn-sm h-100">GO</button>
-                      </div>
-                    </div>
+                    <Form onSubmit={handleSubmit}>
+                      <Form.Group className="mb-3">
+                        <Form.Control
+                          type="text"
+                          placeholder="Cerca il tuo artista preferito"
+                          value={artist}
+                          onChange={(e) => setArtist(e.target.value)}
+                        />
+                      </Form.Group>
+
+                      <Button onClick={console.log(artist)}>Go</Button>
+                    </Form>
                   </li>
                 </ul>
               </div>
