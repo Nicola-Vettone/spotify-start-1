@@ -2,8 +2,8 @@
 
 import { useDispatch, useSelector } from "react-redux";
 
-import { Container, Row, Spinner, Col } from "react-bootstrap";
-import { getMusic } from "../redux/action";
+import { Container, Row, Spinner, Col, Button } from "react-bootstrap";
+import { favouritesSong, getMusic, noFavouritesSong } from "../redux/action";
 import { useEffect } from "react";
 
 const Album = ({ artist, genre }) => {
@@ -44,6 +44,26 @@ const Album = ({ artist, genre }) => {
                 <br />
                 Artist: {song.artist.name}
               </p>
+              <Button
+                variant="light"
+                className="text-danger"
+                onClick={() => {
+                  dispatch(favouritesSong(song));
+                  console.log(song);
+                }}
+              >
+                <i className="bi bi-heart"></i>
+              </Button>
+              <Button
+                variant="light"
+                className="text-danger"
+                onClick={() => {
+                  dispatch(noFavouritesSong(song.album.id));
+                  console.log(song);
+                }}
+              >
+                <i className="bi bi-heart"></i>
+              </Button>
             </div>
           </Col>
         ))}

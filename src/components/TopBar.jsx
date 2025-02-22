@@ -41,9 +41,9 @@ function TopBar() {
                     </Link>
                   </li>
                   <li>
-                    <a className="nav-item nav-link d-flex align-items-center" href="#">
+                    <Link to={"/favourites"} className="nav-item nav-link d-flex align-items-center" href="#">
                       <i className="bi bi-book-fill"></i>&nbsp; Your Library
-                    </a>
+                    </Link>
                   </li>
                   <li>
                     <Form onSubmit={handleSubmit}>

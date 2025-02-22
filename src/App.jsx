@@ -4,12 +4,14 @@ import "./App.css";
 import Player from "./components/Player";
 import TopBar from "./components/TopBar";
 import { Alert } from "react-bootstrap";
+import Favourites from "./components/FavouritesSong";
 
 function App() {
   return (
     <BrowserRouter>
       <Routes>
         <Route path="/" element={<TopBar />} />
+        <Route path="/favourites" element={<Favourites />} />
         <Route
           path="*"
           element={
