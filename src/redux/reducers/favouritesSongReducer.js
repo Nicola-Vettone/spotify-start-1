@@ -19,7 +19,7 @@ const favouritesSongReducer = (state = initialState, action) => {
     case NO_FAV_SONG:
       return {
         ...state,
-        content: state.content.filter((fav) => fav.id !== action.payload),
+        content: state.content.filter((fav) => fav.album.id !== action.payload),
       };
 
     default:

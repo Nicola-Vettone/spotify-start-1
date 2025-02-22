@@ -2,7 +2,7 @@ import { Container, Row, Col, Alert, Button } from "react-bootstrap";
 import { useDispatch, useSelector } from "react-redux";
 import { Link } from "react-router";
 
-import { favouritesSong, noFavouritesSong } from "../redux/action";
+import { noFavouritesSong } from "../redux/action";
 
 const Favourites = () => {
   const favourites = useSelector((state) => state.favourites?.content);
@@ -16,10 +16,9 @@ const Favourites = () => {
         <Container>
           <Row>
             <Col xs={10} className="mx-auto my-3">
-              <h1 className="display-1">Favourites</h1>
+              <h1 className="display-1 text-white">I tuoi brani preferiti</h1>
             </Col>
-
-            <Col xs={10} className="mx-auto mb-5">
+            <Col xs={10} className="mx-auto mb-5 d-flex gap-4 flex-wrap">
               {favourites.length > 0 ? (
                 favourites.map((song) => (
                   <Col key={song.id} md={3}>
@@ -30,7 +29,7 @@ const Favourites = () => {
                         src={song.album.cover_xl}
                         alt="track"
                       />
-                      <p>
+                      <p className="text-white">
                         Track: {song.title}
                         <br />
                         Artist: {song.artist.name}
@@ -39,32 +38,28 @@ const Favourites = () => {
                         variant="light"
                         className="text-danger"
                         onClick={() => {
-                          dispatch(favouritesSong(song));
-                          console.log(song);
-                        }}
-                      >
-                        <i className="bi bi-heart"></i>
-                      </Button>
-                      <Button
-                        variant="light"
-                        className="text-danger"
-                        onClick={() => {
                           dispatch(noFavouritesSong(song.album.id));
                           console.log(song);
                         }}
                       >
-                        <i className="bi bi-heart"></i>
+                        <i className="bi bi-heart-fill"></i>
                       </Button>
                     </div>
                   </Col>
                 ))
               ) : (
                 <>
-                  <Alert variant="warning">Non ci sono preferiti</Alert>
+                  <Alert variant="warning" className="w-100 text-center">
+                    Al momento non hai nessun brano preferito!
+                  </Alert>
                 </>
               )}
-              <Link to="/">Vai a homepage</Link>
             </Col>
+            <Container className="d-flex justify-content-center">
+              <Link className="btn btn-success" to="/">
+                Ritorna alla Home
+              </Link>
+            </Container>
           </Row>
         </Container>
       )}

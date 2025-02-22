@@ -62,7 +62,7 @@ const Album = ({ artist, genre }) => {
                   console.log(song);
                 }}
               >
-                <i className="bi bi-heart"></i>
+                <i className="bi bi-heart-fill"></i>
               </Button>
             </div>
           </Col>
